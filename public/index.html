@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Steve's Projects">
+    <title>Pi GPIO</title>
+    <link rel="icon" type="image/png" href="../images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+   </head>
+
+<body oncopy="return false" oncut="return false" onpaste="return false">
+  
+  <div class="keypadContainer">
+    <h1 class="TextCenter">Control GPIO</h1>
+    
+    <div class="GpioContainer">
+      <strong>GPIO26</strong>
+      <br>
+      <label class="switch">
+	<input type="checkbox" id="GPIO26">
+	<span class="slider round"></span>
+      </label>	
+      <br>
+      <button id="GPIO26M"></button>
+      <br>
+    </div>
+    
+    <div class="GpioContainer">
+      <strong>GPIO20</strong>
+      <br>
+      <label class="switch">
+	<input type="checkbox" id="GPIO20">
+	<span class="slider round"></span>
+      </label>	
+      <br>
+      <button id="GPIO20M"></button>
+      <br>
+    </div>
+    
+    <div class="GpioContainer">
+      <strong>GPIO21</strong>
+      <br>
+      <label class="switch">
+	<input type="checkbox" id="GPIO21">
+	<span class="slider round"></span>
+      </label>	
+      <br>
+      <button id="GPIO21M"></button>
+      <br>
+    </div>
+    
+    <div class="GpioContainer">
+      <strong>GPIO16</strong>
+      <br>
+      <label class="switch">
+	<input type="checkbox" id="GPIO16">
+	<span class="slider round"></span>
+      </label>	
+      <br>
+      <button id="GPIO16M"></button>
+      <br>
+    </div>
+  </div>
+    
+  <!-- include socket.io client side script -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="main.js"></script>
+
+</body>
+</html> 
