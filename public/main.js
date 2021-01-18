@@ -92,9 +92,7 @@ socket.on('GPIO16', function (data) {
 
 function ReportTouchStart(e) {
   //e.preventDefault();  // this prevents the clipboard from popping up on iOS devices but also prevents zooming/scrolling
-  if (e.target.className === 'range-slider') {
-    console.log("volume class detected")
-  } else if (e.target.id === "GPIO26M") {
+  if (e.target.id === "GPIO26M") {
     socket.emit("GPIO26", 1); 
     document.getElementById('GPIO26').checked = 1;
   } else if (e.target.id === "GPIO20M") {
@@ -113,9 +111,7 @@ function ReportTouchStart(e) {
 }
 
 function ReportTouchEnd(e) {
-  if (e.target.className === 'range-slider') {
-    console.log("volume class detected");
-  } else if (e.target.id === "GPIO26M") {
+  if (e.target.id === "GPIO26M") {
     socket.emit("GPIO26", 0); 
     document.getElementById('GPIO26').checked = 0;
   } else if (e.target.id === "GPIO20M") {
