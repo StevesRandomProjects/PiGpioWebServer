@@ -8,6 +8,16 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+		supported by Chrome, Edge, Opera and Firefox */
+}
+
 		
 .keypadContainer {
    /*background-color: red;*/
@@ -51,11 +61,17 @@ html {
         
 	.switch {
 	margin: 10px;
-	padding: 5px;  /* iOS text is not centered unless you set padding to zero */
+	padding: 5px;  /* iOS text is not centered unless you set padding */
 		position: relative;
 		display: inline-block;
 		width: 60px;
 		height: 34px;
+	
+	-webkit-tap-highlight-color: transparent; /* for removing the highlight 
+		*This only works with certain web browser but useful for Safari and 
+		* chrome on mobile touch screens*/
+
+	
 	}
 
 	.switch input { 
