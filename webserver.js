@@ -9,11 +9,9 @@ var LED20 = new Gpio(20, 'out'); //use GPIO pin 26 as output
 var LED21 = new Gpio(21, 'out'); //use GPIO pin 26 as output
 var LED16 = new Gpio(16, 'out'); //use GPIO pin 26 as output
 
-var pushButton = new Gpio(19, 'in', 'both'); //Connect switch between GPIO19 and +3.3V.
-//This will handle 'both' button presses, and releases should be handled
 
-var GPIO26value = 1;  // Turn on the LED by default
-var GPIO20value = 1;  // Turn on the LED by default
+var GPIO26value = 0;  // Turn on the LED by default
+var GPIO20value = 0;  // Turn on the LED by default
 var GPIO21value = 1;  // Turn on the LED by default
 var GPIO16value = 1;  // Turn on the LED by default
 
@@ -40,7 +38,10 @@ http.listen(WebPort, function() {  // This gets call when the web server is firs
 	LED21.writeSync(GPIO21value); //turn LED on or off
 	LED16.writeSync(GPIO16value); //turn LED on or off
 	console.log('Server running on Port '+WebPort);
-	console.log('LED state is '+GPIO26value);
+	console.log('GPIO26 = '+GPIO26value);
+	console.log('GPIO20 = '+GPIO20value);
+	console.log('GPIO21 = '+GPIO21value);
+	console.log('GPIO16 = '+GPIO16value);
 	} 
 ); 
 
@@ -116,8 +117,7 @@ process.on('SIGINT', function () { //on ctrl+c
   
   LED16.writeSync(0); // Turn LED off
   LED16.unexport(); // Unexport LED GPIO to free resources
-  
-  pushButton.unexport(); // Unexport Button GPIO to free resources
+
   process.exit(); //exit completely
 }); 
 
@@ -179,34 +179,16 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
  
  
 
-
     //Whenever someone disconnects this piece of code executed
     socket.on('disconnect', function () {
 	console.log('A user disconnected');
     });
     
-    //function SendToBrowser(data) {
-	//socket.emit(data);
-    //}
+
 }); 
 
 
  
 
 
-/**This code processes the switch connected to the Pi's GPIO pins**/
-/** Connect switch between GPIO 19 and +3.3VDC.**/
-pushButton.watch(function (err, value) { //Watch for hardware interrupts on pushButton
-    if (err) { //if an error
-      console.error('There was an error', err); //output error message to console
-      return;
-    }
-    console.log('The Pi hardbutton button pressed,send Hard button status to clients');
-    GPIO26value = value;
-    
-    // This updates clients if hard button is pressed
-    LED.writeSync(GPIO26value); //turn LED on or off
-    io.emit('GPIO26', GPIO26value); //send button status to client
-    //console.log('GPIO26', GPIO26value);
-});
 
