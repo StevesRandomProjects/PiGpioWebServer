@@ -91,7 +91,7 @@ function handler (req, res) {
 	    console.log('File not found. Filename='+filename);
 	    fs.readFile(__dirname + '/public/404.html', function(err, content) {
 		res.writeHead(200, {'Content-Type': 'text/html'}); 
-		return res.end(content,'utf'); //display 404 on error
+		return res.end(content,'utf8'); //display 404 on error
 	    });
 	}
 	else {
